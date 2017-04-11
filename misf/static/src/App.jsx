@@ -16,6 +16,10 @@
      </tr>
 )}}
 
+IssueRow.propTypes = {
+ issue_id: React.PropTypes.number.isRequired,
+ issue_title: React.PropTypes.string
+};
 
   class IssueTable extends React.Component {
      render() {
