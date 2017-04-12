@@ -19,37 +19,32 @@ title: 'Error in console when clicking Add',
         <div>Filter</div>
 )}}
 
- class IssueRow extends React.Component {
-   render() {
-	const issue= this.props.issue;
-       return (
+ const IssueRow = (props) => (
       <tr>
-      		<td>{issue.id}</td>
-      		<td>{issue.status}</td>
-      		<td>{issue.owner}</td>
-      		<td>{issue.created.toDateString()}</td>
-      		<td>{issue.effort}</td>
-      		<td>{issue.completionDate ? issue.completionDate.toDateString() : ''}</td>
-      		<td>{issue.title}</td>
-
+      		<td>{props.issue.id}</td>
+      		<td>{props.issue.status}</td>
+      		<td>{props.issue.owner}</td>
+      		<td>{props.issue.created.toDateString()}</td>
+      		<td>{props.issue.effort}</td>
+      		<td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
+      		<td>{props.issue.title}</td>
      </tr>
-)}}
+)
 
 // IssueRow.propTypes = {
 //  issue_id: React.PropTypes.number.isRequired,
 //  issue_title: React.PropTypes.string
 // };
 
-  class IssueTable extends React.Component {
-     render() {
-      const issueRows = this.props.issues.map(issue => <IssueRow 
+  function IssueTable(props) {
+      const issueRows = props.issues.map(issue => <IssueRow 
       	key={issue.id} issue={issue}/>);
 	 return (
           <table className="bordered-table">
 	   <thead>
 	    <tr>
 	    	<th>Id</th>
-			<th>Status</th>
+		<th>Status</th>
 	    	<th>Owner</th>
 	    	<th>Created</th>
 	    	<th>Effort</th>
@@ -59,7 +54,7 @@ title: 'Error in console when clicking Add',
 	  </thead>
 	 <tbody>{issueRows}</tbody>
 	</table>
-)}}
+);}
 
   class IssueAdd extends React.Component {
     constructor() {
