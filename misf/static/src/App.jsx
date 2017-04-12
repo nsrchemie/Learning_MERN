@@ -11,7 +11,7 @@
      const borderedStyle = {border: "1px solid silver", padding: 4};
      return (
       <tr>
-        <td style={borderedStyle}>{this.props.issue_id}</td>
+        <td style={borderedStyle}>{this.props.children}</td>
 	<td style={borderedStyle}>{this.props.issue_title}</td>
      </tr>
 )}}
@@ -33,10 +33,10 @@ IssueRow.propTypes = {
 	    </tr>
 	  </thead>
 	 <tbody>
-	   <IssueRow issue_id={1}
-	    issue_title="Error in console when clicking Add" />
-	   <IssueRow issue_id={2}
-	    issue_title="Missing bottom border" />
+	   <IssueRow issue_id={1}>
+	Error in console when clicking Add</IssueRow>
+	   <IssueRow issue_id={2}>
+	    "Missing bottom border"</IssueRow>
          </tbody>
 	</table>
 )}}

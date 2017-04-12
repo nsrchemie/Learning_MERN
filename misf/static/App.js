@@ -52,7 +52,7 @@ var IssueRow = function (_React$Component2) {
         React.createElement(
           "td",
           { style: borderedStyle },
-          this.props.issue_id
+          this.props.children
         ),
         React.createElement(
           "td",
@@ -65,6 +65,11 @@ var IssueRow = function (_React$Component2) {
 
   return IssueRow;
 }(React.Component);
+
+IssueRow.propTypes = {
+  issue_id: React.PropTypes.number.isRequired,
+  issue_title: React.PropTypes.string
+};
 
 var IssueTable = function (_React$Component3) {
   _inherits(IssueTable, _React$Component3);
@@ -103,10 +108,16 @@ var IssueTable = function (_React$Component3) {
         React.createElement(
           "tbody",
           null,
-          React.createElement(IssueRow, { issue_id: 1,
-            issue_title: "Error in console when clicking Add" }),
-          React.createElement(IssueRow, { issue_id: 2,
-            issue_title: "Missing bottom border" })
+          React.createElement(
+            IssueRow,
+            { issue_id: 1 },
+            "Error in console when clicking Add"
+          ),
+          React.createElement(
+            IssueRow,
+            { issue_id: 2 },
+            "\"Missing bottom border\""
+          )
         )
       );
     }
