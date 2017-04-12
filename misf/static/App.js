@@ -8,17 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var issues = [{ id: 1, status: 'Open', owner: 'Ravan',
-  created: new Date('2017-04-11'), effort: 5,
-  completionDate: undefined,
-  title: 'Error in console when clicking Add'
-}, {
-  id: 2, status: 'Assigned', owner: 'Eddie',
-  created: new Date('2017-04-12'), effort: 14,
-  completionDate: new Date('2017-04-20'),
-  title: 'Missing bottom border on panel'
-}];
-
 var contentNode = document.getElementById('contents');
 
 var IssueFilter = function (_React$Component) {
