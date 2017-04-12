@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -7,6 +7,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var issues = [{ id: 1, status: 'Open', owner: 'Ravan',
+  created: new Date('2017-04-11'), effort: 5, completionDate: undefined, title: 'Error in console when clicking Add'
+}, {
+  id: 2, status: 'Assigned', owner: 'Eddie',
+  created: new Date('2017-04-12'), effort: 14,
+  completionDate: new Date('2017-04-20'),
+  title: 'Missing bottom border on panel'
+}];
 
 var contentNode = document.getElementById('contents');
 
@@ -20,12 +29,12 @@ var IssueFilter = function (_React$Component) {
   }
 
   _createClass(IssueFilter, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        "Filter"
+        'Filter'
       );
     }
   }]);
@@ -43,21 +52,46 @@ var IssueRow = function (_React$Component2) {
   }
 
   _createClass(IssueRow, [{
-    key: "render",
+    key: 'render',
     value: function render() {
-      var borderedStyle = { border: "1px solid silver", padding: 4 };
+      var issue = this.props.issue;
       return React.createElement(
-        "tr",
+        'tr',
         null,
         React.createElement(
-          "td",
-          { style: borderedStyle },
-          this.props.children
+          'td',
+          null,
+          issue.id
         ),
         React.createElement(
-          "td",
-          { style: borderedStyle },
-          this.props.issue_title
+          'td',
+          null,
+          issue.status
+        ),
+        React.createElement(
+          'td',
+          null,
+          issue.owner
+        ),
+        React.createElement(
+          'td',
+          null,
+          issue.created.toDateString()
+        ),
+        React.createElement(
+          'td',
+          null,
+          issue.effort
+        ),
+        React.createElement(
+          'td',
+          null,
+          issue.completionDate ? issue.completionDate.toDateString() : ''
+        ),
+        React.createElement(
+          'td',
+          null,
+          issue.title
         )
       );
     }
@@ -81,43 +115,62 @@ var IssueTable = function (_React$Component3) {
   }
 
   _createClass(IssueTable, [{
-    key: "render",
+    key: 'render',
     value: function render() {
-      var borderedStyle = { border: "1px solid silver", padding: 6 };
+      var issueRows = this.props.issues.map(function (issue) {
+        return React.createElement(IssueRow, {
+          key: issue.id, issue: issue });
+      });
       return React.createElement(
-        "table",
-        { style: { borderCollapse: "collapse" } },
+        'table',
+        { className: 'bordered-table' },
         React.createElement(
-          "thead",
+          'thead',
           null,
           React.createElement(
-            "tr",
+            'tr',
             null,
             React.createElement(
-              "th",
-              { style: borderedStyle },
-              "Id"
+              'th',
+              null,
+              'Id'
             ),
             React.createElement(
-              "th",
-              { style: borderedStyle },
-              "Title"
+              'th',
+              null,
+              'Status'
+            ),
+            React.createElement(
+              'th',
+              null,
+              'Owner'
+            ),
+            React.createElement(
+              'th',
+              null,
+              'Created'
+            ),
+            React.createElement(
+              'th',
+              null,
+              'Effort'
+            ),
+            React.createElement(
+              'th',
+              null,
+              'Completion Date'
+            ),
+            React.createElement(
+              'th',
+              null,
+              'Title'
             )
           )
         ),
         React.createElement(
-          "tbody",
+          'tbody',
           null,
-          React.createElement(
-            IssueRow,
-            { issue_id: 1 },
-            "Error in console when clicking Add"
-          ),
-          React.createElement(
-            IssueRow,
-            { issue_id: 2 },
-            "\"Missing bottom border\""
-          )
+          issueRows
         )
       );
     }
@@ -136,12 +189,12 @@ var IssueAdd = function (_React$Component4) {
   }
 
   _createClass(IssueAdd, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
-        "Add"
+        'Add'
       );
     }
   }]);
@@ -159,20 +212,20 @@ var IssueList = function (_React$Component5) {
   }
 
   _createClass(IssueList, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       return React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-          "h1",
+          'h1',
           null,
-          "Issue Tracker"
+          'Issue Tracker'
         ),
         React.createElement(IssueFilter, null),
-        React.createElement("hr", null),
-        React.createElement(IssueTable, null),
-        React.createElement("hr", null),
+        React.createElement('hr', null),
+        React.createElement(IssueTable, { issues: issues }),
+        React.createElement('hr', null),
         React.createElement(IssueAdd, null)
       );
     }
