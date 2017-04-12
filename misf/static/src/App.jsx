@@ -1,5 +1,7 @@
 const issues = [{ id: 1, status: 'Open', owner: 'Ravan',
-created: new Date('2017-04-11'), effort: 5, completionDate: undefined, title: 'Error in console when clicking Add',
+created: new Date('2017-04-11'), effort: 5, 
+completionDate: undefined, 
+title: 'Error in console when clicking Add',
 },
 {
  id: 2, status: 'Assigned', owner: 'Eddie',
@@ -33,10 +35,10 @@ created: new Date('2017-04-11'), effort: 5, completionDate: undefined, title: 'E
      </tr>
 )}}
 
-IssueRow.propTypes = {
- issue_id: React.PropTypes.number.isRequired,
- issue_title: React.PropTypes.string
-};
+// IssueRow.propTypes = {
+//  issue_id: React.PropTypes.number.isRequired,
+//  issue_title: React.PropTypes.string
+// };
 
   class IssueTable extends React.Component {
      render() {
@@ -60,16 +62,37 @@ IssueRow.propTypes = {
 )}}
 
   class IssueAdd extends React.Component {
-     render() {
+    constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+}
+   handleSubmit(e) {
+   e.preventDefault();
+   var form = document.forms.issueAdd;
+   this.props.createIssue({
+	owner: form.owner.value,
+	title: form.title.value,
+	status: 'New',
+	created: new Date(),
+	});
+	form.owner.value = ""; form.title.value = "";
+}
+ 
+   render() {
        return (
-        <div>Add</div>
+        <div>
+	  <form name="issueAdd" onSubmit={this.handleSubmit}>
+	    <input type="text" name="owner" placeholder="Owner" />
+	    <input type="text" name="title" placeholder="Title" />
+	    <button>Add</button>
+	  </form>	
+	</div>
 )}}
   class IssueList extends React.Component {
     constructor() {
 	super();
 	this.state = {issues: []};
-	this.createTestIssue = this.createTestIssue.bind(this);	
-	setTimeout(this.createTestIssue.bind(this), 2000);
+	this.createIssue = this.createIssue.bind(this);
 }
 
 componentDidMount() {
@@ -103,9 +126,8 @@ loadData() {
 	<IssueFilter />
 	<hr />
 	<IssueTable issues={this.state.issues}/>
-	<button onClick={this.createTestIssue}>Add</button>
 	<hr />
-	<IssueAdd />
+	<IssueAdd createIssue={this.createIssue} />
 	</div>
 	);
     }}
