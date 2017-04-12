@@ -1,3 +1,14 @@
+const issues = [{ id: 1, status: 'Open', owner: 'Ravan',
+created: new Date('2017-04-11'), effort: 5, completionDate: undefined, title: 'Error in console when clicking Add',
+},
+{
+ id: 2, status: 'Assigned', owner: 'Eddie',
+ created: new Date('2017-04-12'), effort: 14,
+ completionDate: new Date('2017-04-20'),
+ title: 'Missing bottom border on panel',
+}
+];
+
   const contentNode = document.getElementById('contents');
   
   class IssueFilter extends React.Component {
@@ -53,7 +64,7 @@ IssueRow.propTypes = {
 	<h1>Issue Tracker</h1>
 	<IssueFilter />
 	<hr />
-	<IssueTable />
+	<IssueTable issues={issues}/>
 	<hr />
 	<IssueAdd />
 	</div>
