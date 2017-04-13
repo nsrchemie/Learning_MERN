@@ -162,6 +162,7 @@ var IssueAdd = function (_React$Component2) {
         status: 'New',
         created: new Date()
       });
+      // clear the form for the next input
       form.owner.value = "";form.title.value = "";
     }
   }, {
@@ -197,6 +198,7 @@ var IssueList = function (_React$Component3) {
     var _this3 = _possibleConstructorReturn(this, (IssueList.__proto__ || Object.getPrototypeOf(IssueList)).call(this));
 
     _this3.state = { issues: [] };
+
     _this3.createIssue = _this3.createIssue.bind(_this3);
     return _this3;
   }
@@ -223,19 +225,13 @@ var IssueList = function (_React$Component3) {
           });
         } else {
           response.json().then(function (error) {
-            alert("Failted to fetch issues:" + error.message);
+            alert("Failed to fetch issues:" + error.message);
           });
         }
       }).catch(function (err) {
         alert("Error in fetching data from server:", err);
       });
     }
-
-    //  setTimeout( => {
-    //   this.setState({ issues: issues });
-    // }, 500);
-
-
   }, {
     key: 'createIssue',
     value: function createIssue(newIssue) {
@@ -259,15 +255,7 @@ var IssueList = function (_React$Component3) {
           });
         }
       }).catch(function (err) {
-        alert('Error in sending data to server' + err.message);
-      });
-    }
-  }, {
-    key: 'createTestIssue',
-    value: function createTestIssue() {
-      this.createIssue({
-        status: 'New', owner: 'Pieta', created: new Date(),
-        title: 'Completion date should be optional'
+        alert("Error in sending data to server: " + err.message);
       });
     }
   }, {
