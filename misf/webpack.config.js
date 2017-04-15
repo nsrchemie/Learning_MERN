@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 module.exports = {
  entry: {
-  app:'./static/src/App.jsx',
+  app:['./static/src/App.jsx'],
   vendor: ['react','react-dom','whatwg-fetch','babel-polyfill'],
 },
  output: {
-   path: '/home/nsrchemie/Documents/f_mern/misf/static/',
+   path: __dirname + './static/',
    filename: 'app.bundle.js'
  },
  plugins: [
@@ -34,3 +34,5 @@ devServer: {
   }
 }
 };
+
+//   path: '/home/nsrchemie/Documents/f_mern/misf/static/',
