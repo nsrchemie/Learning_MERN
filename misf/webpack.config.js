@@ -32,7 +32,8 @@ devServer: {
       target: 'http://localhost:3000'
     }
   }
-}
+},
+devtool: 'source-map'
 };
 
 //   path: '/home/nsrchemie/Documents/f_mern/misf/static/',
