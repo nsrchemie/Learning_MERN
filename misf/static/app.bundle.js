@@ -1,85 +1,28 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-/******/
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
+webpackJsonp([0],{
+
+/***/ 198:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _IssueAdd = __webpack_require__(2);
+var _react = __webpack_require__(57);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(138);
+
+var _IssueAdd = __webpack_require__(200);
 
 var _IssueAdd2 = _interopRequireDefault(_IssueAdd);
 
-var _IssueFilter = __webpack_require__(3);
+var _IssueFilter = __webpack_require__(201);
 
 var _IssueFilter2 = _interopRequireDefault(_IssueFilter);
 
@@ -92,40 +35,40 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var IssueRow = function IssueRow(props) {
-  return React.createElement(
+  return _react2.default.createElement(
     'tr',
     null,
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue._id
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.status
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.owner
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.created.toDateString()
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.effort
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.completionDate ? props.issue.completionDate.toDateString() : ''
     ),
-    React.createElement(
+    _react2.default.createElement(
       'td',
       null,
       props.issue.title
@@ -140,56 +83,56 @@ var IssueRow = function IssueRow(props) {
 
 function IssueTable(props) {
   var issueRows = props.issues.map(function (issue) {
-    return React.createElement(IssueRow, {
+    return _react2.default.createElement(IssueRow, {
       key: issue._id, issue: issue });
   });
-  return React.createElement(
+  return _react2.default.createElement(
     'table',
     { className: 'bordered-table' },
-    React.createElement(
+    _react2.default.createElement(
       'thead',
       null,
-      React.createElement(
+      _react2.default.createElement(
         'tr',
         null,
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Id'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Status'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Owner'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Created'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Effort'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Completion Date'
         ),
-        React.createElement(
+        _react2.default.createElement(
           'th',
           null,
           'Title'
         )
       )
     ),
-    React.createElement(
+    _react2.default.createElement(
       'tbody',
       null,
       issueRows
@@ -269,44 +212,58 @@ var IssueList = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return React.createElement(
+      return _react2.default.createElement(
         'div',
         null,
-        React.createElement(
+        _react2.default.createElement(
           'h1',
           null,
           'Issue Tracker'
         ),
-        React.createElement(_IssueFilter2.default, null),
-        React.createElement('hr', null),
-        React.createElement(IssueTable, { issues: this.state.issues }),
-        React.createElement('hr', null),
-        React.createElement(_IssueAdd2.default, { createIssue: this.createIssue })
+        _react2.default.createElement(_IssueFilter2.default, null),
+        _react2.default.createElement('hr', null),
+        _react2.default.createElement(IssueTable, { issues: this.state.issues }),
+        _react2.default.createElement('hr', null),
+        _react2.default.createElement(_IssueAdd2.default, { createIssue: this.createIssue })
       );
     }
   }]);
 
   return IssueList;
-}(React.Component);
+}(_react2.default.Component);
+
+exports.default = IssueList;
 
 /***/ }),
-/* 1 */
+
+/***/ 199:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _IssueList = __webpack_require__(0);
+__webpack_require__(92);
+
+var _IssueList = __webpack_require__(198);
 
 var _IssueList2 = _interopRequireDefault(_IssueList);
+
+var _react = __webpack_require__(57);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(93);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var contentNode = document.getElementById('contents');
-ReactDOM.render(React.createElement(_IssueList2.default, null), contentNode);
+_reactDom2.default.render(_react2.default.createElement(_IssueList2.default, null), contentNode);
 
 /***/ }),
-/* 2 */
+
+/***/ 200:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -317,6 +274,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(57);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -337,7 +300,7 @@ var IssueAdd = function (_React$Component) {
   }
 
   _createClass(IssueAdd, [{
-    key: "handleSubmit",
+    key: 'handleSubmit',
     value: function handleSubmit(e) {
       e.preventDefault();
       var form = document.forms.issueAdd;
@@ -350,20 +313,20 @@ var IssueAdd = function (_React$Component) {
       form.owner.value = "";form.title.value = "";
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render() {
-      return React.createElement(
-        "div",
+      return _react2.default.createElement(
+        'div',
         null,
-        React.createElement(
-          "form",
-          { name: "issueAdd", onSubmit: this.handleSubmit },
-          React.createElement("input", { type: "text", name: "owner", placeholder: "Owner" }),
-          React.createElement("input", { type: "text", name: "title", placeholder: "Title" }),
-          React.createElement(
-            "button",
+        _react2.default.createElement(
+          'form',
+          { name: 'issueAdd', onSubmit: this.handleSubmit },
+          _react2.default.createElement('input', { type: 'text', name: 'owner', placeholder: 'Owner' }),
+          _react2.default.createElement('input', { type: 'text', name: 'title', placeholder: 'Title' }),
+          _react2.default.createElement(
+            'button',
             null,
-            "Add"
+            'Add'
           )
         )
       );
@@ -371,12 +334,13 @@ var IssueAdd = function (_React$Component) {
   }]);
 
   return IssueAdd;
-}(React.Component);
+}(_react2.default.Component);
 
 exports.default = IssueAdd;
 
 /***/ }),
-/* 3 */
+
+/***/ 201:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -387,6 +351,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(57);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -404,20 +374,21 @@ var IssueFilter = function (_React$Component) {
   }
 
   _createClass(IssueFilter, [{
-    key: "render",
+    key: 'render',
     value: function render() {
-      return React.createElement(
-        "div",
+      return _react2.default.createElement(
+        'div',
         null,
-        "Filter"
+        'Filter'
       );
     }
   }]);
 
   return IssueFilter;
-}(React.Component);
+}(_react2.default.Component);
 
 exports.default = IssueFilter;
 
 /***/ })
-/******/ ]);
+
+},[199]);

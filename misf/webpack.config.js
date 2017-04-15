@@ -1,9 +1,18 @@
+const webpack = require('webpack');
 module.exports = {
- entry: './static/src/App.jsx',
+ entry: {
+  app:'./static/src/App.jsx',
+  vendor: ['react','react-dom','whatwg-fetch','babel-polyfill'],
+},
  output: {
    path: '/home/nsrchemie/Documents/f_mern/misf/static/',
    filename: 'app.bundle.js'
  },
+ plugins: [
+  new webpack.optimize.CommonsChunkPlugin({
+  name: 'vendor',
+  filename:'vendor.bundle.js'})
+],
  module: {
  loaders: [
   {

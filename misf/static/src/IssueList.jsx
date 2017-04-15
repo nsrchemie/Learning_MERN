@@ -1,3 +1,5 @@
+ import React from 'react';
+ import 'whatwg-fetch';
  import IssueAdd from './IssueAdd.jsx';
  import IssueFilter from './IssueFilter.jsx';
 
@@ -41,7 +43,7 @@
 
 
 
-class IssueList extends React.Component {
+export default class IssueList extends React.Component {
   constructor() {
     super();
     this.state = { issues: [] };
