@@ -21,6 +21,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "mongodb": "^2.2.25",
+    "prop-types": "^15.5.8",
     "source-map-support": "^0.4.14"
   },
   "devDependencies": {

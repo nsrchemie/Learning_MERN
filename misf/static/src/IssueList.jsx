@@ -3,7 +3,7 @@
  import {Link} from 'react-router';
  import IssueAdd from './IssueAdd.jsx';
  import IssueFilter from './IssueFilter.jsx';
-
+ import PropTypes from 'prop-types';
 
  const IssueRow = (props) => (
     <tr>
@@ -19,8 +19,8 @@
 )
 
 // IssueRow.propTypes = {
-//  issue_id: React.PropTypes.number.isRequired,
-//  issue_title: React.PropTypes.string
+//  issue_id: PropTypes.number.isRequired,
+//  issue_title: PropTypes.string
 // };
 
   function IssueTable(props) {

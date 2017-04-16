@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 export default class IssueEdit extends React.Component {
  render() {
@@ -13,5 +14,5 @@ export default class IssueEdit extends React.Component {
  }
 
 IssueEdit.propTypes = {
-   params: React.PropTypes.object.isRequired,
+   params: PropTypes.object.isRequired,
 };
