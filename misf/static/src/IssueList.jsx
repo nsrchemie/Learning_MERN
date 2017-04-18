@@ -1,6 +1,6 @@
  import React from 'react';
  import 'whatwg-fetch';
- import {Link} from 'react-router';
+ import {Link} from 'react-router-dom';
  import IssueAdd from './IssueAdd.jsx';
  import IssueFilter from './IssueFilter.jsx';
  import PropTypes from 'prop-types';
@@ -24,7 +24,7 @@
 // };
 
   function IssueTable(props) {
-      const issueRows = props.issues.map(issue => <IssueRow 
+      const issueRows = props.issues.map(issue => <IssueRow
        key={issue._id} issue={issue}/>);
 	 return (
           <table className="bordered-table">

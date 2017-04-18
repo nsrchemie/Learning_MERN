@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export default class IssueEdit extends React.Component {
- render() {
+render() {
+// const IssueEdit = () => {
    return (
      <div>
-     <p>Edit issue {this.props.params.id}</p>
+     <p>Edit issue  {this.props.id}
+
+     </p>
      <Link to="/issues">Return to issue list</Link>
      </div> 
    );
   }
  }
 
-IssueEdit.propTypes = {
+// const IssueEdit = (props) => (
+// 	<div>
+// 	  <p>Edit issue {this.props.id}</p>
+//        <Link to="/issues">Return to issue list</Link>
+//     </div> 
+// 	)
+
+IssueEdit.PropTypes = {
    params: PropTypes.object.isRequired,
 };
