@@ -24,7 +24,8 @@
     "prop-types": "^15.5.8",
     "query-string": "^4.3.3",
     "react-router-dom": "^4.1.1",
-    "source-map-support": "^0.4.14"
+    "source-map-support": "^0.4.14",
+    "url-search-params": "^0.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

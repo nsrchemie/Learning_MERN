@@ -26,6 +26,9 @@ app.use(webpackHotMiddleware(bundler, { log: console.log }));
 }
 
 app.get('/api/issues', (req, res) => {
+  const filter= {};
+  if (req.query.status) filter.status = req.query.status;
+
   db.collection('issues').find().toArray().then(issues => {
     const metadata = { total_count: issues.length };
     res.json({ _metadata: metadata, records: issues })

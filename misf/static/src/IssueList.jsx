@@ -4,6 +4,8 @@
  import IssueAdd from './IssueAdd.jsx';
  import IssueFilter from './IssueFilter.jsx';
  import PropTypes from 'prop-types';
+ const URLSearchParams = require('url-search-params');
+ const queryString = require('query-string');
 
  const IssueRow = (props) => (
     <tr>
@@ -16,12 +18,7 @@
       <td>{props.issue.completionDate ? props.issue.completionDate.toDateString() : ''}</td>
       <td>{props.issue.title}</td>
      </tr>
-)
-
-// IssueRow.propTypes = {
-//  issue_id: PropTypes.number.isRequired,
-//  issue_title: PropTypes.string
-// };
+);
 
   function IssueTable(props) {
       const issueRows = props.issues.map(issue => <IssueRow
@@ -51,14 +48,33 @@ export default class IssueList extends React.Component {
     this.state = { issues: [] };
 
     this.createIssue = this.createIssue.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
+
+  setFilter(query) {
+    this.props.router.push({ pathname: this.props.location.pathname, query});
+  }
+
 
   componentDidMount() {
     this.loadData();
   }
 
+  componentDidUpdate(prevProps) {
+  //const oldQuery = new URLSearchParams(prevProps.location.query);
+  //const newQuery = new URLSearchParams(this.props.location.query);
+  let oq = queryString.parse(prevProps.location.search);
+  let nq  = queryString.parse(location.search);
+  // console.log(` OldQuery is ${oq.status} NewQuey is ${nq.status}`);
+  // console.log(typeof nq.status);
+  if (oq.status == nq.status) {
+     return;
+  }
+  this.loadData();
+  }
+
   loadData() {
-    fetch('/api/issues').then(response => {
+    fetch(`/api/issues${this.props.location.search}`).then(response => {
       if (response.ok) {
         response.json().then(data => {
           console.log("Total count of records:", data._metadata.total_count);
@@ -105,11 +121,13 @@ export default class IssueList extends React.Component {
     });
   }
 
+
+
   render() {
     return (
       <div>
         <h1>Issue Tracker</h1>
-        <IssueFilter />
+        <IssueFilter setFilter={this.setFilter}/>
         <hr />
         <IssueTable issues={this.state.issues} />
         <hr />
@@ -118,3 +136,8 @@ export default class IssueList extends React.Component {
     );
   }
 }
+
+IssueList.propTypes = {
+  location: PropTypes.object.isRequired,
+  router: PropTypes.object,
+};
