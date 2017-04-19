@@ -1,6 +1,6 @@
  import React from 'react';
  import 'whatwg-fetch';
- import {Link} from 'react-router-dom';
+ import {Link} from 'react-router';
  import IssueAdd from './IssueAdd.jsx';
  import IssueFilter from './IssueFilter.jsx';
  import PropTypes from 'prop-types';
