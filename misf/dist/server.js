@@ -16,6 +16,10 @@ var _issue2 = _interopRequireDefault(_issue);
 
 require('babel-polyfill');
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _sourceMapSupport = require('source-map-support');
 
 var _sourceMapSupport2 = _interopRequireDefault(_sourceMapSupport);
@@ -71,6 +75,10 @@ app.post('/api/issues', (req, res) => {
     console.log(error);
     res.status(500).json({ message: `Internal Server Error: ${error}` });
   });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(_path2.default.resolve('static/index.html'));
 });
 
 let db;

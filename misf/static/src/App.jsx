@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import IssueList from './IssueList.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, withRouter, Route, Redirect, hashHistory } from 'react-router';
+import { Router, withRouter, Route, Redirect, browserHistory, hashHistory } from 'react-router';
 import IssueEdit from './IssueEdit.jsx';
 import PropTypes from 'prop-types';
 
@@ -29,7 +29,7 @@ App.propTypes = {
 
 
 const RoutedApp = () => (
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Redirect from="/" to="/issues" />
     <Route path="/" component={App}>
     <Route path="/issues" component={withRouter(IssueList)} />

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { MongoClient } from 'mongodb';
 import Issue from './issue.js';
 import 'babel-polyfill';
+import path from 'path';
 import SourceMapSupport from 'source-map-support';
 SourceMapSupport.install();
 
@@ -24,6 +25,7 @@ const bundler = webpack(config);
 app.use(webpackDevMiddleware(bundler, { noInfo: true }));
 app.use(webpackHotMiddleware(bundler, { log: console.log }));
 }
+
 
 app.get('/api/issues', (req, res) => {
   const filter = {};
@@ -57,6 +59,10 @@ app.post('/api/issues', (req, res) => {
     console.log(error);
     res.status(500).json({ message: `Internal Server Error: ${error}` });
   });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('static/index.html'));
 });
 
 let db;
